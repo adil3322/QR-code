@@ -3,7 +3,7 @@ const contactData = `BEGIN:VCARD
 VERSION:3.0
 FN:Adil Alam
 N:Alam;Adil;;;
-TEL:960821167
+TEL:9608211167
 EMAIL:alamadil2234@gmail.com
 ORG:Arya College of Engineering
 TITLE:BTech Computer Science and Engineering
