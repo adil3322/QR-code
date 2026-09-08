@@ -3,108 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Adil Alam - QR Code</title>
 
+    <link rel="stylesheet" href="style.css">
+
+    <!-- QR Code Library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-            width: 320px;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-        }
-
-        #qrcode {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        button {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            background: #111827;
-            color: white;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        button:hover {
-            background: #374151;
-        }
-    </style>
 </head>
 
 <body>
 
-<div class="card">
+    <div class="container">
 
-    <h2>Adil Alam</h2>
+        <div class="qr-card">
 
-    <div id="qrcode"></div>
+            <h1>Adil Alam</h1>
 
-    <button onclick="downloadQR()">
-        Download QR Code
-    </button>
+            <p class="subtitle">My Digital Contact QR</p>
 
-</div>
+            <div id="qrcode"></div>
 
-<script>
+            <div class="details">
+                <p><strong>Name:</strong> Adil Alam</p>
+                <p><strong>College:</strong> Arya College of Engineering</p>
+                <p><strong>Course:</strong> BTech Computer Science & Engineering</p>
+                <p><strong>Roll No:</strong> 23EACCS011</p>
+            </div>
 
-const contactData = `
-BEGIN:VCARD
-VERSION:3.0
-FN:Adil Alam
-N:Alam;Adil;;;
-TEL:960821167
-EMAIL:alamadil2234@gmail.com
-ORG:Arya College of Engineering
-TITLE:BTech Computer Science and Engineering
-NOTE:Roll No: 23eaccs011
-URL:https://www.linkedin.com/in/adil-alam-a05339288
-END:VCARD
-`;
+            <button id="downloadBtn">
+                Download QR Code
+            </button>
 
-const qr = new QRCode(document.getElementById("qrcode"), {
-    text: contactData,
-    width: 220,
-    height: 220,
-    colorDark: "#000000",
-    colorLight: "#ffffff",
-    correctLevel: QRCode.CorrectLevel.H
-});
+        </div>
 
-function downloadQR() {
+    </div>
 
-    const qrImage = document.querySelector("#qrcode img");
-
-    const link = document.createElement("a");
-
-    link.href = qrImage.src;
-    link.download = "Adil_Alam_QR.png";
-
-    link.click();
-}
-
-</script>
+    <script src="script.js"></script>
 
 </body>
 </html>
