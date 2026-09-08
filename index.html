@@ -1,181 +1,110 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adil Alam | LinkHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adil Alam - QR Code</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
-<link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
 
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            width: 320px;
+        }
 
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #111827;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #374151;
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
+<div class="card">
 
-<nav class="navbar">
+    <h2>Adil Alam</h2>
 
-<h2>LinkHub</h2>
+    <div id="qrcode"></div>
 
-<ul>
-
-<li><a href="#home">Home</a></li>
-
-<li><a href="#about">About</a></li>
-
-<li><a href="#skills">Skills</a></li>
-
-<li><a href="#projects">Projects</a></li>
-
-<li><a href="#contact">Contact</a></li>
-
-</ul>
-
-<button id="themeBtn">🌙</button>
-
-</nav>
-
-</header>
-
-<section class="hero" id="home">
-
-<div class="left">
-
-<img src="assets/profile.jpg" class="profile">
-
-<h1>Adil Alam</h1>
-
-<h3>Full Stack Developer</h3>
-
-<p>
-
-I build responsive websites, web apps and modern digital experiences.
-
-</p>
-
-<div class="buttons">
-
-<a href="#" class="btn">Portfolio</a>
-
-<a href="#" class="btn">Resume</a>
+    <button onclick="downloadQR()">
+        Download QR Code
+    </button>
 
 </div>
 
-</div>
+<script>
 
-<div class="right">
+const contactData = `
+BEGIN:VCARD
+VERSION:3.0
+FN:Adil Alam
+N:Alam;Adil;;;
+TEL:960821167
+EMAIL:alamadil2234@gmail.com
+ORG:Arya College of Engineering
+TITLE:BTech Computer Science and Engineering
+NOTE:Roll No: 23eaccs011
+URL:https://www.linkedin.com/in/adil-alam-a05339288
+END:VCARD
+`;
 
-<div id="qrcode"></div>
+const qr = new QRCode(document.getElementById("qrcode"), {
+    text: contactData,
+    width: 220,
+    height: 220,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+});
 
-<p>Scan Me</p>
+function downloadQR() {
 
-</div>
+    const qrImage = document.querySelector("#qrcode img");
 
-</section>
+    const link = document.createElement("a");
 
-<section id="about">
+    link.href = qrImage.src;
+    link.download = "Adil_Alam_QR.png";
 
-<h2>About Me</h2>
+    link.click();
+}
 
-<p>
-
-B.Tech CSE Student passionate about Full Stack Development, JavaScript and modern web technologies.
-
-</p>
-
-</section>
-
-<section id="skills">
-
-<h2>Skills</h2>
-
-<div class="cards">
-
-<div class="card">HTML</div>
-
-<div class="card">CSS</div>
-
-<div class="card">JavaScript</div>
-
-<div class="card">React</div>
-
-<div class="card">Git</div>
-
-<div class="card">GitHub</div>
-
-</div>
-
-</section>
-
-<section id="projects">
-
-<h2>Projects</h2>
-
-<div class="cards">
-
-<div class="project">
-
-<h3>Portfolio Website</h3>
-
-<p>Personal Portfolio</p>
-
-</div>
-
-<div class="project">
-
-<h3>Weather App</h3>
-
-<p>Weather Forecast</p>
-
-</div>
-
-<div class="project">
-
-<h3>QR LinkHub</h3>
-
-<p>Smart QR Platform</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="contact">
-
-<h2>Connect With Me</h2>
-
-<div class="social">
-
-<a href="#">GitHub</a>
-
-<a href="#">LinkedIn</a>
-
-<a href="#">Instagram</a>
-
-<a href="#">WhatsApp</a>
-
-<a href="#">Email</a>
-
-<a href="#">Facebook</a>
- 
-
-</div>
-
-</section>
-
-<footer>
-
-<p>© 2026 Adil Alam | LinkHub</p>
-
-</footer>
-
-<script src="script.js"></script>
+</script>
 
 </body>
 </html>
