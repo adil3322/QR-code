@@ -1,175 +1,46 @@
- // ==========================
-// Theme Toggle
-// ==========================
+// Your Contact Information
+const contactData = `BEGIN:VCARD
+VERSION:3.0
+FN:Adil Alam
+N:Alam;Adil;;;
+TEL:960821167
+EMAIL:alamadil2234@gmail.com
+ORG:Arya College of Engineering
+TITLE:BTech Computer Science and Engineering
+NOTE:Roll No: 23eaccs011
+URL:https://www.linkedin.com/in/adil-alam-a05339288
+END:VCARD`;
 
-const themeBtn = document.getElementById("themeBtn");
+// Generate QR Code
+const qrCode = new QRCode(document.getElementById("qrcode"), {
+    text: contactData,
+    width: 230,
+    height: 230,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+});
 
-themeBtn.addEventListener("click", () => {
 
-    document.body.classList.toggle("light");
+// Download QR Code
+document.getElementById("downloadBtn").addEventListener("click", function () {
 
-    if(document.body.classList.contains("light")){
-        themeBtn.innerHTML = "🌞";
-    }else{
-        themeBtn.innerHTML = "🌙";
+    const qrImage = document.querySelector("#qrcode img");
+
+    if (!qrImage) {
+        alert("QR Code is not ready!");
+        return;
     }
 
-});
+    const downloadLink = document.createElement("a");
 
+    downloadLink.href = qrImage.src;
+    downloadLink.download = "Adil_Alam_Contact_QR.png";
 
-// ==========================
-// QR Code
-// ==========================
+    document.body.appendChild(downloadLink);
 
-const portfolioURL = "https://adil3322.github.io/portfolio/";
+    downloadLink.click();
 
-QRCode.toCanvas(
-    portfolioURL,
-    {
-        width:180,
-        margin:2
-    },
-    function(error, canvas){
-
-        if(error){
-            console.log(error);
-            return;
-        }
-
-        document.getElementById("qrcode").appendChild(canvas);
-
-    }
-);
-
-
-// ==========================
-// Portfolio Button
-// ==========================
-
-document.querySelectorAll(".btn")[0].addEventListener("click",function(e){
-
-    e.preventDefault();
-
-    window.open(
-        "https://adil3322.github.io/portfolio/",
-        "_blank"
-    );
-
-});
-
-
-// ==========================
-// Resume Button
-// ==========================
-
-document.querySelectorAll(".btn")[1].addEventListener("click",function(e){
-
-    e.preventDefault();
-
-    window.open(
-        "assets/resume.pdf",
-        "_blank"
-    );
-
-});
-
-
-// ==========================
-// Social Links
-// ==========================
-
-const socialLinks = {
-
-    github:"https://github.com/adil332",
-
-    linkedin:"https://linkedin.com/in/adil-alam-a05339288",
-
-    instagram:"https://instagram.com/",
-
-    whatsapp:"https://wa.me/919608211167"
-
-};
-
-const socialButtons = document.querySelectorAll(".social a");
-
-socialButtons[0].href = socialLinks.github;
-
-socialButtons[1].href = socialLinks.linkedin;
-
-socialButtons[2].href = socialLinks.instagram;
-
-socialButtons[3].href = socialLinks.whatsapp;
-
-
-// Open all links in new tab
-
-socialButtons.forEach(btn=>{
-
-    btn.target="_blank";
-
-});
-
-
-// ==========================
-// Navbar Active Effect
-// ==========================
-
-const links=document.querySelectorAll("nav a");
-
-links.forEach(link=>{
-
-link.addEventListener("click",()=>{
-
-links.forEach(item=>item.style.color="white");
-
-link.style.color="#38bdf8";
-
-});
-
-});
-
-
-// ==========================
-// Welcome Message
-// ==========================
-
-console.log("Welcome to LinkHub 🚀");
-
-
-// ==========================
-// Smooth Fade Animation
-// ==========================
-
-const sections=document.querySelectorAll("section");
-
-const observer=new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.animate(
-
-[
-{opacity:0,transform:"translateY(40px)"},
-{opacity:1,transform:"translateY(0px)"}
-],
-
-{
-duration:700,
-fill:"forwards"
-}
-
-);
-
-}
-
-});
-
-});
-
-sections.forEach(section=>{
-
-observer.observe(section);
+    document.body.removeChild(downloadLink);
 
 });
