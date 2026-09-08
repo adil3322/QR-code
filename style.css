@@ -1,223 +1,116 @@
- *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-    scroll-behavior:smooth;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background:#0f172a;
-    color:#fff;
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #667eea, #764ba2);
 }
 
-.navbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 8%;
-    background:#111827;
-    position:sticky;
-    top:0;
-    z-index:1000;
+.container {
+    width: 100%;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
 }
 
-.navbar h2{
-    color:#38bdf8;
+.qr-card {
+    width: 380px;
+    padding: 30px;
+
+    background: white;
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
-.navbar ul{
-    display:flex;
-    list-style:none;
-    gap:25px;
+.qr-card h1 {
+    color: #222;
+    font-size: 30px;
+    margin-bottom: 8px;
 }
 
-.navbar a{
-    color:white;
-    text-decoration:none;
-    transition:.3s;
+.subtitle {
+    color: #777;
+    margin-bottom: 25px;
 }
 
-.navbar a:hover{
-    color:#38bdf8;
+#qrcode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 20px auto;
 }
 
-#themeBtn{
-    border:none;
-    background:#38bdf8;
-    color:#000;
-    padding:10px 15px;
-    border-radius:8px;
-    cursor:pointer;
+#qrcode img {
+    border: 8px solid white;
+    border-radius: 5px;
 }
 
-.hero{
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    padding:80px 8%;
-    flex-wrap:wrap;
+.details {
+    text-align: left;
+
+    background: #f5f6fa;
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin: 20px 0;
 }
 
-.profile{
-    width:220px;
-    height:220px;
-    border-radius:50%;
-    object-fit:cover;
-    border:5px solid #38bdf8;
-    margin-bottom:20px;
+.details p {
+    font-size: 14px;
+    color: #444;
+
+    margin: 8px 0;
+    line-height: 1.5;
 }
 
-.left{
-    max-width:500px;
+button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #111827;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
 }
 
-.left h1{
-    font-size:48px;
+button:hover {
+    background: #374151;
+    transform: translateY(-2px);
 }
 
-.left h3{
-    color:#38bdf8;
-    margin:10px 0;
-}
+@media (max-width: 450px) {
 
-.left p{
-    margin:20px 0;
-    line-height:1.7;
-}
+    .qr-card {
+        width: 100%;
+        padding: 25px;
+    }
 
-.buttons{
-    display:flex;
-    gap:15px;
-}
-
-.btn{
-    padding:12px 25px;
-    background:#38bdf8;
-    color:#000;
-    text-decoration:none;
-    border-radius:10px;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:translateY(-4px);
-}
-
-.right{
-    text-align:center;
-}
-
-#qrcode{
-    background:#fff;
-    padding:15px;
-    border-radius:15px;
-    display:inline-block;
-}
-
-section{
-    padding:80px 8%;
-}
-
-section h2{
-    text-align:center;
-    margin-bottom:40px;
-    color:#38bdf8;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.card,
-.project{
-    background:#1e293b;
-    padding:25px;
-    border-radius:15px;
-    text-align:center;
-    transition:.3s;
-}
-
-.card:hover,
-.project:hover{
-    transform:translateY(-8px);
-    background:#334155;
-}
-
-.social{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.social a{
-    padding:12px 20px;
-    background:#38bdf8;
-    color:#000;
-    text-decoration:none;
-    border-radius:10px;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.social a:hover{
-    transform:scale(1.08);
-}
-
-footer{
-    text-align:center;
-    padding:30px;
-    background:#111827;
-}
-
-.light{
-    background:#f8fafc;
-    color:#111;
-}
-
-.light .navbar{
-    background:#fff;
-}
-
-.light .card,
-.light .project{
-    background:#fff;
-    color:#000;
-}
-
-.light footer{
-    background:#fff;
-    color:#000;
-}
-
-@media(max-width:768px){
-
-.hero{
-flex-direction:column;
-text-align:center;
-}
-
-.navbar{
-flex-direction:column;
-gap:15px;
-}
-
-.navbar ul{
-flex-wrap:wrap;
-justify-content:center;
-}
-
-.left h1{
-font-size:35px;
-}
-
-.profile{
-width:180px;
-height:180px;
-}
+    .qr-card h1 {
+        font-size: 26px;
+    }
 
 }
